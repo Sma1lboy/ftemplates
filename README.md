@@ -1,44 +1,30 @@
-# vite + react
+# React + TypeScript + Vite
 
-This is your project name, a short and descriptive title of your project.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Introduction
+Currently, two official plugins are available:
 
-This project is a web frontend project template based on the Vite scaffolding with React framework. It includes custom Prettier and ESLint settings and uses SWC as the JavaScript/TypeScript compiler. This template aims to help developers quickly start a pre-configured React project, making the development process more efficient and unified.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Tech Stack
+## Expanding the ESLint configuration
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A modern frontend build tool that provides fast cold starts and instant hot module replacement (HMR).
-- **SWC**: A high-performance JavaScript/TypeScript compiler that aims to be faster than Babel.
-- **ESLint**: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, helping to ensure code quality and consistency.
-- **Prettier**: An opinionated code formatter that supports multiple languages, ensuring consistent code style.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Quick Start
+- Configure the top-level `parserOptions` property like this:
 
-To start a new project using this template, follow these steps:
-
-1. **Clone the Template**
-
-Use `degit` to clone the template to your local directory. `degit` allows you to quickly download templates without retaining the history, making the initialization of new projects lightweight.
-
-```bash
-npx degit your-username/your-repo-name my-new-project
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
 ```
 
-## Customizing Configuration
-
-This template comes with a set of pre-configured Prettier and ESLint settings. You can adjust these configuration files according to personal or team coding practices.
-
-- **Prettier Configuration**: `.prettierrc`
-- **ESLint Configuration**: `.eslintrc.js`
-
-Please refer to their respective documentation for guidance on customizing these tools' configurations.
-
-## Contributing
-
-If you wish to contribute to this template with code additions or improvements, feel free to create an issue or submit a pull request.
-
-## License
-
-MIT
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

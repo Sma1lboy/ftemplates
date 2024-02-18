@@ -1,6 +1,6 @@
 # vite + react
 
-This is your project name, a short and descriptive title of your project.
+vite + react
 
 ## Introduction
 
@@ -23,7 +23,7 @@ To start a new project using this template, follow these steps:
 Use `degit` to clone the template to your local directory. `degit` allows you to quickly download templates without retaining the history, making the initialization of new projects lightweight.
 
 ```bash
-npx degit your-username/your-repo-name my-new-project
+npx degit sma1lboy/ftemplates#VERSION my-new-project
 ```
 
 ## Customizing Configuration
